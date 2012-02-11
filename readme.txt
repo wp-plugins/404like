@@ -13,11 +13,17 @@ Es wird keine 404 Fehlermeldung ausgegeben, sondern nach ähnlichen Seiten gesuc
 It is not issued any 404 error message, but looking for similar sites and forwarded to any results or output a list of possible matches
 
 == Changelog ==
-1.0.2
-Check for sql injection by '";
-Plugin work automatic without code in 404 template
-1.0
+= 1.0.2 =
+* Check for sql injection by '";
+* Plugin work automatic without code in 404 template
+= 1.0 =
 First version
+
+== Upgrade Notice ==
+
+= 1.0.2 =
+* This version fixed security problem
+* The using of <?php checkPage(); ? > is deprecated. It was replace with a automatic function.
 
 == Installation ==
 

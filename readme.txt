@@ -12,6 +12,13 @@ It is not issued any 404 error message, but looking for similar sites and forwar
 Es wird keine 404 Fehlermeldung ausgegeben, sondern nach ähnlichen Seiten gesucht und auf eventuelle Treffer weitergeleitet oder eine Liste möglicher Treffer ausgegeben.
 It is not issued any 404 error message, but looking for similar sites and forwarded to any results or output a list of possible matches
 
+== Changelog ==
+1.0.2
+Check for sql injection by '";
+Plugin work automatic without code in 404 template
+1.0
+First version
+
 == Installation ==
 
 1. Upload `404Like.php` to the `/wp-content/plugins/` directory

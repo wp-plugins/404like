@@ -3,7 +3,7 @@ Contributors: tobig
 Donate link: http://www.gnetos.de
 Tags: 404, not found
 Requires at least: 2.7.0
-Tested up to: 3.0
+Tested up to: 3.3.0
 Stable tag: trunk
 
 It is not issued any 404 error message, but looking for similar sites and forwarded to any results or output a list of possible matches
@@ -16,5 +16,5 @@ It is not issued any 404 error message, but looking for similar sites and forwar
 
 1. Upload `404Like.php` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Place `<?php checkPage(); ? >` in first line of your 404 template page.
+3. Nothing, it works without any other activities - you can test it
 4. Optional add < ? php new404ErrorPage(); ? >  to your 404 template page.

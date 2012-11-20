@@ -1,18 +1,22 @@
 === Plugin Name ===
 Contributors: tobig
 Donate link: http://www.gnetos.de
-Tags: 404, not found
+Tags: 404, not found, redirect, 301, autoredirect
 Requires at least: 2.7.0
 Tested up to: 3.3.0
-Stable tag: trunk
+Stable tag: 1.1.0
 
 It is not issued any 404 error message, but looking for similar sites and forwarded to any results or output a list of possible matches
 
 == Description ==
-Es wird keine 404 Fehlermeldung ausgegeben, sondern nach ähnlichen Seiten gesucht und auf eventuelle Treffer weitergeleitet oder eine Liste möglicher Treffer ausgegeben.
+Es wird keine 404 Fehlermeldung ausgegeben, sondern nach ähnlichen Seiten gesucht und auf eventuelle Treffer weitergeleitet oder eine Liste möglicher Treffer ausgegeben. Damit wird bei einer Änderung der Kategorisierung die Seite oder der Artikel wieder gefunden und keine 404 Seite ausgegeben. 
+
 It is not issued any 404 error message, but looking for similar sites and forwarded to any results or output a list of possible matches
 
 == Changelog ==
+= 1.1.0 =
+* Fix Search now by title and post name
+* Fix Now search similar pages not with extension html or htm
 = 1.0.2 =
 * Check for sql injection by '";
 * Plugin work automatic without code in 404 template
@@ -20,6 +24,9 @@ It is not issued any 404 error message, but looking for similar sites and forwar
 First version
 
 == Upgrade Notice ==
+
+= 1.1.0=
+Nothing
 
 = 1.0.2 =
 * This version fixed security problem

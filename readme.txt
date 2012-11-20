@@ -1,7 +1,7 @@
 === Plugin Name ===
 Contributors: tobig
 Donate link: http://www.gnetos.de
-Tags: 404, not found, redirect, 301, autoredirect
+Tags: 404, not found, redirect, 301, autoredirect, posts, page
 Requires at least: 2.7.0
 Tested up to: 3.3.0
 Stable tag: 1.1.0

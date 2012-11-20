@@ -3,7 +3,7 @@
  Plugin Name: 404Like
  Plugin URI: http://www.gnetos.de/projekte/404Like
  Description: Es wird keine 404 Fehlermeldung ausgegeben, sondern nach ähnlichen Seiten gesucht und auf eventuelle Treffer weitergeleitet oder eine Liste möglicher Treffer ausgegeben / It is not issued any 404 error message, but looking for similar sites and forwarded to any results or output a list of possible matches
- Version: 1.0.2
+ Version: 1.1.0
  Author: Tobias Gafner
  Author URI: http://www.gnetos.de
  License: GPL2
@@ -25,7 +25,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 /**
- * Search function
+ * Search function Title
  */ 
 function findPostWhereLikeNameTitle($title = "") {
 	$title = strtolower($title);
@@ -34,22 +34,16 @@ function findPostWhereLikeNameTitle($title = "") {
 	return $where;
 }
 /**
- * Search function
+ * Search function post name
  */ 
 function findPostWhereLike($title = "") {
 	$title = strtolower($title);
 	$where = " (post_type = 'post' OR post_type = 'page') AND
-    post_status = 'publish' AND (LOWER(post_title) like '%".$title."%')";
+    post_status = 'publish' AND (LOWER(post_name) like '%".$title."%')";
 	return $where;
 }
 /**
- *  this function must call in your 404 Page
- *  
- *  <?php checkPage(); ? >
-    <?php
-    get_header();
-    ? >
-    .....
+ *  this function must search similar pages
  *
  */  
 function checkPage() {
@@ -72,11 +66,13 @@ function checkPage() {
     //Letztes von xxx/xxxx/xxx ist interessant
     $searchWord = 	substr (strrchr ($urltext, "/"), 1);
     //SQL 
+    $searchWord = preg_replace("(.html|.htm)","",$searchWord);
     $searchWord = stripslashes($searchWord);
     $searchWord = str_replace ("'", "", $searchWord);
     $searchWord = str_replace ('"', "", $searchWord);
     $searchWord = str_replace (';', "", $searchWord);
-    $querystr = "SELECT * FROM $wpdb->posts WHERE ".findPostWhereLike($searchWord);
+    $querystr = "SELECT * FROM $wpdb->posts WHERE ".findPostWhereLikeNameTitle($searchWord);
+
     $pageposts = $wpdb->get_col($querystr);
     if ($pageposts) {
       ob_start();
@@ -100,10 +96,6 @@ function checkPage() {
 /**
  * Result List by many results
  * 
- * example:
- * ...</p>
-        < ? php new404ErrorPage(); ? >      
-	....  
  */ 
 function new404ErrorPage() {
 	global $wpdb;
@@ -120,6 +112,7 @@ function new404ErrorPage() {
     //Letztes von xxx/xxxx/xxx ist interessant
     $searchWord = 	substr (strrchr ($urltext, "/"), 1);
     //SQL
+    $searchWord = preg_replace("(.html|htm)","",$searchWord);
     $querystr = "SELECT *  FROM $wpdb->posts WHERE ".findPostWhereLikeNameTitle($searchWord);   
     $pageposts = $wpdb->get_col($querystr);
     if ($pageposts) {
@@ -133,11 +126,14 @@ function new404ErrorPage() {
     	}
     	echo "</ul></div>";
     }
-  	//Reset Query
-  	wp_reset_query();
-	}
+    //Reset Query
+    wp_reset_query();
+    }
 }
 
+/**
+* Filter
+*/
 function plugin404Like_filter($redirect, $request) {
 
 	if ( is_404() ) {return false;}
